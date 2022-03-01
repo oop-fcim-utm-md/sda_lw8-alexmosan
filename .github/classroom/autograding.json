@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "test_lw8",
+      "setup": "",
+      "run": "make test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    }
+  ]
+}
