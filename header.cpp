@@ -1,14 +1,15 @@
 #include "header.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
 
-void initialize(node_t** first, const char** names, const unsigned int length)
-{   
-    node_t** nodes = new node_t*[length];
+void initialize(node_t **first, const char **names, const unsigned int length)
+{
+    node_t **nodes = new node_t *[length];
     for (size_t i = 0; i < length; i++)
     {
-        if (!*first) 
+        if (!*first)
         {
             *first = new node_t;
             (*first)->data_.id_ = i + 1;
@@ -16,30 +17,32 @@ void initialize(node_t** first, const char** names, const unsigned int length)
             (*first)->next_ = NULL;
         }
         else
-        {   
+        {
             nodes[i] = new node_t;
             nodes[i]->data_.id_ = i + 1;
             strcpy(nodes[i]->data_.name_, names[i]);
             nodes[i]->next_ = NULL;
-            
+
             if (!(*first)->next_)
                 (*first)->next_ = nodes[i];
             else
-                nodes[i-1]->next_ = nodes[i];            
-        }        
+                nodes[i - 1]->next_ = nodes[i];
+        }
     }
 }
-void print(node_t* arr) 
-{    
+
+void print(node_t *arr)
+{
     while (arr)
     {
         std::cout << arr->data_.name_ << " ";
         arr = arr->next_;
     }
 }
-void clear(node_t* arr) 
+
+void clear(node_t *arr)
 {
-    while(arr)
+    while (arr)
     {
         arr->data_.id_ = 0;
         for (size_t i = 0; i < strlen(arr->data_.name_); i++)
@@ -48,10 +51,9 @@ void clear(node_t* arr)
         }
         arr = arr->next_;
     }
-   
-
 }
-void swap(node_t* a, node_t* b)
+
+void swap(node_t *a, node_t *b)
 {
     int temp = a->data_.id_;
     char str_temp[50];
@@ -63,11 +65,12 @@ void swap(node_t* a, node_t* b)
     b->data_.id_ = temp;
     strcpy(b->data_.name_, str_temp);
 }
-data_t find(node_t* arr, const char* name, const unsigned int id)
+
+data_t find(node_t *arr, const char *name, const unsigned int id)
 {
     if (!name && !id)
     {
-        data_t* res = new data_t;
+        data_t *res = new data_t;
         return *res;
     }
     else if (!name)
@@ -92,19 +95,19 @@ data_t find(node_t* arr, const char* name, const unsigned int id)
                 {
                     flag = 1;
                 }
-                else 
+                else
                 {
                     flag = 0;
                 }
             }
 
-            if (flag) 
+            if (flag)
             {
                 return arr->data_;
             }
             arr = arr->next_;
         }
-    }    
+    }
     else
     {
         while (arr)
@@ -116,10 +119,11 @@ data_t find(node_t* arr, const char* name, const unsigned int id)
             arr = arr->next_;
         }
     }
-    data_t* res = new data_t;
-    return *res;
+    // data_t *res = new data_t;
+    return data_t{};
 }
-node_t* find_ref(node_t* arr, const char* name, const unsigned int id) 
+
+node_t *find_ref(node_t *arr, const char *name, const unsigned int id)
 {
     if (!name && !id)
     {
@@ -158,11 +162,12 @@ node_t* find_ref(node_t* arr, const char* name, const unsigned int id)
             arr = arr->next_;
         }
     }
-    
+
     return NULL;
 }
-void edit(node_t* arr, const char* name)
-{ 
-    if(name)
+
+void edit(node_t *arr, const char *name)
+{
+    if (name)
         strcpy(arr->data_.name_, name);
 }

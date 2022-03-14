@@ -1,3 +1,5 @@
+#ifndef _HEADER_H_
+#define _HEADER_H_
 
 struct data_t 
 {
@@ -18,3 +20,5 @@ void swap(node_t *, node_t *);
 data_t find(node_t *, const char *, const unsigned int);
 node_t * find_ref(node_t *, const char *, const unsigned int);
 void edit(node_t *, const char *);
+
+#endif
