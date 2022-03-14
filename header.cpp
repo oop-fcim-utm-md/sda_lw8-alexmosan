@@ -42,15 +42,17 @@ void print(node_t *arr)
 
 void clear(node_t *arr)
 {
-    while (arr)
+    node_t* temp = arr;
+    while (temp)
     {
-        arr->data_.id_ = 0;
-        for (size_t i = 0; i < strlen(arr->data_.name_); i++)
-        {
-            arr->data_.name_[i] = 0;
-        }
-        arr = arr->next_;
+        arr = temp;
+        temp = arr->next_;
+        free(arr);
+        arr = NULL;
     }
+    free(temp);
+    temp = NULL;
+
 }
 
 void swap(node_t *a, node_t *b)
